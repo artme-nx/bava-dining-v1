@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bava Dining &amp; More — moderna mediteranska kuhinja i koktel bar | Šibenik</title>
+<meta name="description" content="Bava Dining & More u Šibeniku — moderna mediteranska kuhinja, koktel bar i lagani morski povjetarac. U hladu najstarijeg šibenskog stabla na Zlarinskoj 1. Rezervirajte stol." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<style>
+  :root{
+    --bg:#F8F7F4;
+    --bg-2:#F1EFE9;
+    --teal:#3E7E78;
+    --teal-deep:#2C5C57;
+    --sand:#E4D8C5;
+    --sand-soft:#EFE7D9;
+    --char:#23262A;
+    --char-soft:#4A4F55;
+    --line:#DAD5CC;
+    --serif:'Fraunces',Georgia,serif;
+    --sans:'Inter',system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);color:var(--char);font-family:var(--sans);
+    font-weight:400;line-height:1.6;-webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 28px}
+  .eyebrow{
+    font-size:.74rem;letter-spacing:.34em;text-transform:uppercase;
+    color:var(--teal);font-weight:500;
+  }
+  h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.06;letter-spacing:-.01em}
+  .reveal{opacity:0;transform:translateY(34px)}
+
+  /* HEADER */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:90;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 28px;transition:background .4s ease,padding .4s ease,box-shadow .4s ease;
+  }
+  header.scrolled{
+    background:rgba(248,247,244,.86);backdrop-filter:blur(14px);
+    padding:13px 28px;box-shadow:0 1px 0 var(--line);
+  }
+  .brand{font-family:var(--serif);font-size:1.34rem;letter-spacing:.01em}
+  .brand span{color:var(--teal)}
+  nav.main{display:flex;gap:34px;align-items:center}
+  nav.main a{font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--char-soft);transition:color .25s}
+  nav.main a:hover{color:var(--teal)}
+  .btn-res{
+    font-family:var(--sans);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;
+    background:var(--teal);color:#fff;padding:13px 24px;border-radius:40px;
+    transition:background .3s,transform .3s;font-weight:500;border:none;cursor:pointer;
+  }
+  .btn-res:hover{background:var(--teal-deep);transform:translateY(-2px)}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+  .burger span{width:26px;height:2px;background:var(--char);transition:.3s}
+
+  /* HERO */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:flex-end;overflow:hidden}
+  .hero-media{position:absolute;inset:0;z-index:0;clip-path:inset(0 0 100% 0)}
+  .hero-media img{width:100%;height:118%;object-fit:cover;will-change:transform}
+  .hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(20,22,24,.62) 0%,rgba(20,22,24,.12) 45%,rgba(20,22,24,.30) 100%)}
+  .hero-inner{position:relative;z-index:2;color:#fff;padding-bottom:9vh;width:100%}
+  .hero-inner .eyebrow{color:#E4D8C5}
+  .hero h1{font-size:clamp(2.9rem,8.2vw,7rem);color:#fff;margin:18px 0 24px;max-width:14ch}
+  .hero h1 em{font-style:italic;color:#E4D8C5}
+  .hero-sub{font-size:clamp(1rem,1.6vw,1.22rem);max-width:46ch;color:rgba(255,255,255,.9);font-weight:300}
+  .hero-cta{display:flex;gap:18px;margin-top:34px;flex-wrap:wrap;align-items:center}
+  .ghost{
+    font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;
+    padding:13px 24px;border:1px solid rgba(255,255,255,.5);border-radius:40px;transition:.3s;
+  }
+  .ghost:hover{background:#fff;color:var(--char)}
+  .scroll-hint{position:absolute;bottom:26px;right:28px;z-index:3;color:rgba(255,255,255,.8);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;writing-mode:vertical-rl}
+
+  /* STATS / count-up */
+  .stats{background:var(--bg);padding:62px 0}
+  .stats-grid{display:flex;flex-wrap:wrap;gap:18px;justify-content:space-between;align-items:center}
+  .stat{display:flex;flex-direction:column;gap:4px}
+  .stat .num{font-family:var(--serif);font-size:2.6rem;color:var(--teal-deep);line-height:1}
+  .stat .lab{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--char-soft)}
+  .divider{height:1px;background:var(--line);width:100%;margin:0}
+
+  /* MANIFEST */
+  .manifest{padding:120px 0 110px;text-align:center}
+  .manifest .eyebrow{display:block;margin-bottom:26px}
+  .manifest p{font-family:var(--serif);font-size:clamp(1.5rem,3.4vw,2.5rem);line-height:1.32;max-width:20ch;margin:0 auto;color:var(--char);font-weight:300}
+  .manifest p b{color:var(--teal);font-weight:400;font-style:italic}
+
+  /* SECTION head */
+  .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:52px;flex-wrap:wrap}
+  .sec-head h2{font-size:clamp(2rem,4.4vw,3.3rem);max-width:16ch}
+  .sec-head .eyebrow{margin-bottom:14px;display:block}
+  .sec-head p{max-width:40ch;color:var(--char-soft);font-size:1rem}
+
+  /* STORY */
+  .story{padding:30px 0 120px}
+  .story-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:center}
+  .story-txt h2{font-size:clamp(2rem,4.2vw,3.1rem);margin:16px 0 26px}
+  .story-txt p{color:var(--char-soft);margin-bottom:18px;max-width:46ch}
+  .story-img{position:relative;border-radius:6px;overflow:hidden;aspect-ratio:4/5}
+  .story-img img{width:100%;height:100%;object-fit:cover}
+  .story-badge{position:absolute;left:-26px;bottom:34px;background:var(--bg);padding:22px 26px;border-radius:6px;box-shadow:0 14px 40px rgba(35,38,42,.12)}
+  .story-badge .num{font-family:var(--serif);font-size:2rem;color:var(--teal-deep);line-height:1}
+  .story-badge .lab{font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--char-soft);margin-top:6px}
+
+  /* MENU */
+  .menu{padding:110px 0;background:var(--bg-2)}
+  .menu-cols{display:grid;grid-template-columns:1fr 1fr;gap:60px 80px}
+  .menu-col h3{font-size:1.5rem;margin-bottom:8px;color:var(--teal-deep)}
+  .menu-col>.eyebrow{display:block;margin-bottom:26px}
+  .dish{padding:20px 0;border-bottom:1px solid var(--line)}
+  .dish:last-child{border-bottom:none}
+  .dish h4{font-family:var(--serif);font-size:1.22rem;font-weight:400;margin-bottom:5px}
+  .dish p{font-size:.92rem;color:var(--char-soft);max-width:42ch}
+
+  /* SWIPER signatures */
+  .signatures{padding:110px 0}
+  .sig-swiper{overflow:visible;padding-bottom:10px}
+  .sig-card{background:var(--bg);border-radius:6px;overflow:hidden}
+  .sig-card .ph{aspect-ratio:3/4;overflow:hidden}
+  .sig-card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .9s ease}
+  .sig-card:hover .ph img{transform:scale(1.06)}
+  .sig-meta{padding:22px 22px 28px}
+  .sig-meta .tag{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--teal)}
+  .sig-meta h4{font-family:var(--serif);font-size:1.34rem;font-weight:400;margin:8px 0 8px}
+  .sig-meta p{font-size:.9rem;color:var(--char-soft)}
+  .sw-nav{display:flex;gap:12px;margin-top:36px}
+  .sw-nav button{width:50px;height:50px;border-radius:50%;border:1px solid var(--line);background:none;cursor:pointer;font-size:1.1rem;color:var(--char);transition:.3s}
+  .sw-nav button:hover{background:var(--teal);color:#fff;border-color:var(--teal)}
+
+  /* GALLERY */
+  .gallery{padding:30px 0 120px}
+  .gal-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+  .gal-grid figure{overflow:hidden;border-radius:6px}
+  .gal-grid img{width:100%;height:100%;object-fit:cover;transition:transform 1s ease}
+  .gal-grid figure:hover img{transform:scale(1.05)}
+  .g1{grid-column:span 7;aspect-ratio:16/11}
+  .g2{grid-column:span 5;aspect-ratio:4/5}
+  .g3{grid-column:span 5;aspect-ratio:4/5}
+  .g4{grid-column:span 7;aspect-ratio:16/11}
+
+  /* LOCATION */
+  .location{padding:110px 0;background:var(--bg-2)}
+  .loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:stretch}
+  .loc-info h2{font-size:clamp(2rem,4.2vw,3rem);margin:16px 0 30px}
+  .loc-row{display:flex;gap:18px;padding:20px 0;border-bottom:1px solid var(--line)}
+  .loc-row:last-child{border-bottom:none}
+  .loc-row .k{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal);min-width:120px;padding-top:3px}
+  .loc-row .v{font-size:1.02rem;color:var(--char)}
+  .loc-row .v b{font-family:var(--serif);font-weight:400}
+  .loc-map{border-radius:6px;overflow:hidden;min-height:420px;border:1px solid var(--line)}
+  .loc-map iframe{width:100%;height:100%;min-height:420px;border:0;filter:grayscale(.2) contrast(1.02)}
+
+  /* FOOTER */
+  footer{background:var(--char);color:#EDEAE3;padding:90px 0 36px}
+  .foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:50px;padding-bottom:60px;border-bottom:1px solid rgba(255,255,255,.12)}
+  .foot-brand{font-family:var(--serif);font-size:2rem;margin-bottom:16px}
+  .foot-brand span{color:var(--sand)}
+  .foot-top p{color:rgba(237,234,227,.66);max-width:34ch;font-size:.94rem}
+  .foot-col h5{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--sand);margin-bottom:18px}
+  .foot-col a,.foot-col p{display:block;color:rgba(237,234,227,.78);font-size:.95rem;margin-bottom:10px;transition:color .25s}
+  .foot-col a:hover{color:#fff}
+  .foot-bot{display:flex;justify-content:space-between;align-items:center;padding-top:28px;flex-wrap:wrap;gap:12px;font-size:.82rem;color:rgba(237,234,227,.5)}
+  .foot-bot a{color:var(--sand)}
+
+  @media(max-width:900px){
+    nav.main{display:none}
+    .burger{display:flex}
+    .story-grid,.menu-cols,.loc-grid,.foot-top{grid-template-columns:1fr;gap:44px}
+    .story-badge{left:18px}
+    .gal-grid{grid-template-columns:1fr 1fr}
+    .g1,.g2,.g3,.g4{grid-column:span 1;aspect-ratio:1/1}
+    .loc-map{min-height:340px}
+  }
+  @media(max-width:560px){
+    .wrap{padding:0 20px}
+    header{padding:16px 20px}
+    .gal-grid{grid-template-columns:1fr}
+    .hero h1{font-size:clamp(2.6rem,12vw,3.4rem)}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .reveal{opacity:1!important;transform:none!important}
+    .hero-media{clip-path:none!important}
+    *{scroll-behavior:auto!important}
+  }
+</style>
+</head>
+<body>
+
+<header id="header">
+  <a href="#top" class="brand">Bava<span>.</span></a>
+  <nav class="main">
+    <a href="#story">Priča</a>
+    <a href="#menu">Kuhinja</a>
+    <a href="#signatures">Koktel bar</a>
+    <a href="#gallery">Galerija</a>
+    <a href="#location">Kontakt</a>
+  </nav>
+  <a href="#location" class="btn-res">Rezerviraj stol</a>
+  <button class="burger" id="burger" aria-label="Izbornik"><span></span><span></span><span></span></button>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-media" id="heroMedia">
+    <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=2000&q=80" alt="Moderno mediteransko jelo i atmosfera restorana Bava" />
+  </div>
+  <div class="hero-inner wrap">
+    <span class="eyebrow">Šibenik · Moderno mediteransko</span>
+    <h1>Lagani morski <em>povjetarac</em>, na tanjuru.</h1>
+    <p class="hero-sub">Bava — dalmatinski naziv za nježni jutarnji vjetar nad morem. Suvremena mediteranska kuhinja, koktel bar i ležerna elegancija u hladu najstarijeg šibenskog stabla.</p>
+    <div class="hero-cta">
+      <a href="#location" class="btn-res">Rezerviraj stol</a>
+      <a href="#menu" class="ghost">Pogledaj kuhinju</a>
+    </div>
+  </div>
+  <div class="scroll-hint">Pomakni</div>
+</section>
+
+<section class="stats">
+  <div class="wrap stats-grid reveal">
+    <div class="stat"><span class="num" data-count="4.7" data-dec="1">0</span><span class="lab">Prosječna ocjena</span></div>
+    <div class="stat"><span class="num" data-count="213" data-suffix="">0</span><span class="lab">Recenzija gostiju</span></div>
+    <div class="stat"><span class="num">★ #6</span><span class="lab">TripAdvisor Šibenik</span></div>
+    <div class="stat"><span class="num">2025</span><span class="lab">Sezona u Šibeniku</span></div>
+  </div>
+</section>
+<div class="wrap"><div class="divider"></div></div>
+
+<section class="manifest">
+  <div class="wrap">
+    <span class="eyebrow reveal">Manifest</span>
+    <p class="reveal">Vjerujemo u <b>svjež morski sastojak</b>, lagani dodir kuhinje i koktele koji mirišu na ljeto. Bava je mjesto gdje se <b>moderna Dalmacija</b> susreće s povjetarcem.</p>
+  </div>
+</section>
+
+<section class="story" id="story">
+  <div class="wrap story-grid">
+    <div class="story-txt reveal">
+      <span class="eyebrow">Naša priča</span>
+      <h2>U hladu najstarijeg šibenskog stabla.</h2>
+      <p>Bava Dining &amp; More rođena je iz ljubavi prema moru i suvremenom mediteranskom stolu. Smješteni na Zlarinskoj ulici, u srcu kamenog Šibenika, gradimo prostor koji diše — otvoren, svijetao i ležeran.</p>
+      <p>Naša kuhinja slavi lokalni ulov, maslinovo ulje s otoka i povrće sa šibenskih polja, posluženo u modernoj, finoj formi za dijeljenje. Uz to, koktel bar koji morski povjetarac pretvara u čašu.</p>
+      <p>Više od restorana — mjesto za večere koje traju, druženja koja se pamte i trenutke koji mirišu na sol i ljeto.</p>
+    </div>
+    <div class="story-img reveal">
+      <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=80" alt="Svijetli suvremeni interijer restorana Bava" />
+      <div class="story-badge">
+        <div class="num">4.7 ★</div>
+        <div class="lab">213 recenzija</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow">Kuhinja</span>
+        <h2>Moderno mediteranski, za dijeljenje.</h2>
+      </div>
+      <p>Sezonski meni vođen ulovom dana i otočkim sastojcima. Cijene i dnevne ponude na upit u restoranu.</p>
+    </div>
+    <div class="menu-cols">
+      <div class="menu-col reveal">
+        <span class="eyebrow">Za početak &amp; dijeljenje</span>
+        <div class="dish"><h4>Carpaccio od orade</h4><p>Tanko rezana orada, limunov gel, kapare, ekstra djevičansko maslinovo ulje i morska sol.</p></div>
+        <div class="dish"><h4>Hobotnica s pečenim krumpirom</h4><p>Sporo kuhana hobotnica, kremasti krumpir, dimljena paprika i peršin.</p></div>
+        <div class="dish"><h4>Burrata &amp; pečena rajčica</h4><p>Kremasta burrata, karamelizirana rajčica, bosiljkovo ulje i hrskavi kruh.</p></div>
+        <div class="dish"><h4>Tartar od tune</h4><p>Sirova tuna, avokado, sezam, lagani citrus i wasabi majoneza.</p></div>
+      </div>
+      <div class="menu-col reveal">
+        <span class="eyebrow">Glavna jela</span>
+        <div class="dish"><h4>Brodet od bijele ribe</h4><p>Suvremena interpretacija dalmatinskog brodeta s palentom i začinskim biljem.</p></div>
+        <div class="dish"><h4>Rižoto od škampa</h4><p>Kremasti rižoto, svježi škampi iz Jadrana, maslac od limuna i vlasac.</p></div>
+        <div class="dish"><h4>Filet brancina na žaru</h4><p>Cijeli filet brancina, blitva s krumpirom i emulzija od limuna.</p></div>
+        <div class="dish"><h4>Janjeća pisanica</h4><p>Sporo pečena janjetina, pire od batata, jus s ružmarinom i sezonsko povrće.</p></div>
+        <div class="dish"><h4>Domaća tjestenina s plodovima mora</h4><p>Svježa tjestenina, školjke, rajčica, bijelo vino i čili.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="signatures" id="signatures">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow">Koktel bar &amp; potpisi</span>
+        <h2>Povjetarac u čaši.</h2>
+      </div>
+      <p>Autorski kokteli i potpisi kuhinje — naša najdraža lica Bave, posložena za polagano klizanje s lijeva na desno.</p>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="swiper sig-swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide sig-card">
+          <div class="ph"><img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=900&q=80" alt="Citrusni koktel Bava Spritz" /></div>
+          <div class="sig-meta"><span class="tag">Koktel</span><h4>Bava Spritz</h4><p>Aperol, pjenušac, citrus i grančica ružmarina — ljeto u prvom gutljaju.</p></div>
+        </div>
+        <div class="swiper-slide sig-card">
+          <div class="ph"><img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=80" alt="Koktel Sea Breeze" /></div>
+          <div class="sig-meta"><span class="tag">Koktel</span><h4>Maestral</h4><p>Gin, krastavac, bazga i tonik — svjež poput sjevernog vjetra.</p></div>
+        </div>
+        <div class="swiper-slide sig-card">
+          <div class="ph"><img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=900&q=80" alt="Potpisno jelo škampi" /></div>
+          <div class="sig-meta"><span class="tag">Potpis kuhinje</span><h4>Rižoto od škampa</h4><p>Kremasta tekstura, jadranski škampi i maslac od limuna.</p></div>
+        </div>
+        <div class="swiper-slide sig-card">
+          <div class="ph"><img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?auto=format&fit=crop&w=900&q=80" alt="Negroni koktel" /></div>
+          <div class="sig-meta"><span class="tag">Koktel</span><h4>Zlarin Negroni</h4><p>Gin, vermut, bitter i kora naranče — klasik s otočkom dušom.</p></div>
+        </div>
+        <div class="swiper-slide sig-card">
+          <div class="ph"><img src="https://images.unsplash.com/photo-1432139509613-5c4255815697?auto=format&fit=crop&w=900&q=80" alt="Carpaccio od orade" /></div>
+          <div class="sig-meta"><span class="tag">Potpis kuhinje</span><h4>Carpaccio od orade</h4><p>Limun, kapare i maslinovo ulje — lagano, svijetlo, mediteransko.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="sw-nav">
+      <button id="sigPrev" aria-label="Prethodno">&larr;</button>
+      <button id="sigNext" aria-label="Sljedeće">&rarr;</button>
+    </div>
+  </div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <span class="eyebrow">Galerija</span>
+        <h2>Atmosfera Bave.</h2>
+      </div>
+      <p>Svijetli prostor, more na dohvat i tanjuri koji slave Mediteran.</p>
+    </div>
+    <div class="gal-grid">
+      <figure class="g1 reveal"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1400&q=80" alt="Suvremeni interijer s prirodnim svjetlom" /></figure>
+      <figure class="g2 reveal"><img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=1000&q=80" alt="Svježi plodovi mora" /></figure>
+      <figure class="g3 reveal"><img src="https://images.unsplash.com/photo-1535007813616-79dc02ba4021?auto=format&fit=crop&w=1000&q=80" alt="Detalj posluženog jela" /></figure>
+      <figure class="g4 reveal"><img src="https://images.unsplash.com/photo-1505761671935-60b3a7427bad?auto=format&fit=crop&w=1400&q=80" alt="Šibenska rivijera i more" /></figure>
+    </div>
+  </div>
+</section>
+
+<section class="location" id="location">
+  <div class="wrap loc-grid">
+    <div class="loc-info reveal">
+      <span class="eyebrow">Posjeti nas</span>
+      <h2>Rezerviraj svoj stol.</h2>
+      <div class="loc-row"><span class="k">Adresa</span><span class="v"><b>Zlarinska 1, 22000 Šibenik</b><br>U hladu najstarijeg šibenskog stabla</span></div>
+      <div class="loc-row"><span class="k">Telefon</span><span class="v"><a href="tel:+385223326010"><b>022 332 601</b></a><br>Rezervacije i upiti</span></div>
+      <div class="loc-row"><span class="k">Radno vrijeme</span><span class="v">Pon – Ned: <b>11:00 – 24:00</b><br>Kuhinja do 23:00 · Bar do ponoći</span></div>
+      <div class="loc-row"><span class="k">Rezervacije</span><span class="v">Preporučamo rezervaciju, posebno za večernje termine i terasu.</span></div>
+      <a href="tel:+385223326010" class="btn-res" style="margin-top:30px;display:inline-block">Nazovi za rezervaciju</a>
+    </div>
+    <div class="loc-map reveal">
+      <iframe src="https://maps.google.com/maps?q=Bava+Dining+More+Sibenik&output=embed" loading="lazy" title="Bava Dining & More — Šibenik" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand">Bava<span>.</span> Dining &amp; More</div>
+        <p>Suvremena mediteranska kuhinja i koktel bar u srcu Šibenika. Lagani morski povjetarac, na tanjuru.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Navigacija</h5>
+        <a href="#story">Priča</a>
+        <a href="#menu">Kuhinja</a>
+        <a href="#signatures">Koktel bar</a>
+        <a href="#gallery">Galerija</a>
+      </div>
+      <div class="foot-col">
+        <h5>Kontakt</h5>
+        <p>Zlarinska 1, Šibenik</p>
+        <a href="tel:+385223326010">022 332 601</a>
+        <p>Pon – Ned: 11:00 – 24:00</p>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 Bava Dining &amp; More · Šibenik</span>
+      <span>Dizajn &amp; izrada — <a href="#top">studio povjetarca</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// HEADER scroll
+const header=document.getElementById('header');
+const onScrollH=()=>header.classList.toggle('scrolled',window.scrollY>40);
+onScrollH();window.addEventListener('scroll',onScrollH);
+
+// BURGER (simple anchor scroll)
+document.getElementById('burger').addEventListener('click',()=>{
+  document.getElementById('location').scrollIntoView({behavior:reduce?'auto':'smooth'});
+});
+
+// SWIPER
+const sig=new Swiper('.sig-swiper',{
+  slidesPerView:1.15,spaceBetween:18,grabCursor:true,
+  navigation:{nextEl:'#sigNext',prevEl:'#sigPrev'},
+  breakpoints:{640:{slidesPerView:2.1,spaceBetween:20},1000:{slidesPerView:3.2,spaceBetween:24}}
+});
+
+if(!reduce){
+  // LENIS
+  const lenis=new Lenis({lerp:.09,smoothWheel:true});
+  function raf(t){lenis.raf(t);requestAnimationFrame(raf);}requestAnimationFrame(raf);
+  gsap.registerPlugin(ScrollTrigger);
+  lenis.on('scroll',ScrollTrigger.update);
+
+  // HERO clip reveal + parallax
+  gsap.to('#heroMedia',{clipPath:'inset(0 0 0% 0)',duration:1.5,ease:'power3.out',delay:.15});
+  gsap.from('.hero-inner .eyebrow,.hero h1,.hero-sub,.hero-cta',{
+    y:40,opacity:0,duration:1.1,ease:'power3.out',stagger:.12,delay:.5
+  });
+  gsap.to('#heroMedia img',{yPercent:12,ease:'none',
+    scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+
+  // REVEALS
+  gsap.utils.toArray('.reveal').forEach(el=>{
+    gsap.to(el,{y:0,opacity:1,duration:1,ease:'power3.out',
+      scrollTrigger:{trigger:el,start:'top 86%'}});
+  });
+
+  // COUNT-UP
+  document.querySelectorAll('[data-count]').forEach(el=>{
+    const end=parseFloat(el.dataset.count);const dec=parseInt(el.dataset.dec||0);
+    const suf=el.dataset.suffix||'';
+    ScrollTrigger.create({trigger:el,start:'top 90%',once:true,onEnter:()=>{
+      gsap.to({v:0},{v:end,duration:1.6,ease:'power2.out',
+        onUpdate:function(){el.textContent=this.targets()[0].v.toFixed(dec)+suf;}});
+    }});
+  });
+}else{
+  document.querySelectorAll('[data-count]').forEach(el=>{
+    const dec=parseInt(el.dataset.dec||0);el.textContent=parseFloat(el.dataset.count).toFixed(dec)+(el.dataset.suffix||'');
+  });
+}
+</script>
+</body>
+</html>
